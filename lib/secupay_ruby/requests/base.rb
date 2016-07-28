@@ -75,7 +75,7 @@ module SecupayRuby
                                                          data: json_response["data"],
                                                          errors: json_response["errors"])
 
-          raise RequestError.new(response.errors) if response.failed?
+          raise RequestError.new(response.errors || response.data) if response.failed?
 
           response
         end
